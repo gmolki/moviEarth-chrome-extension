@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      media="all"
+      href="assets/css/extension.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="content">
+      <div class="login-page">
+        <div class="text-center d-flex justify-content-center row h-100">
+          <form class="form-signin my-auto" name="signIn">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputUsername" class="sr-only">Username</label>
+            <input
+              type="text"
+              id="inputUsername"
+              name="username"
+              class="form-control"
+              placeholder="Username"
+              required=""
+              autofocus=""
+            />
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me" name="rememberMe" />
+                Remember me
+              </label>
+            </div>
+            <button
+              id="signin-button"
+              class="btn btn-lg btn-primary btn-block"
+              type="submit"
+            >
+              Sign in
+            </button>
+          </form>
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+  </body>
+  <script src="mapload.js"></script>
+  <script src="login.js"></script>
+  <script src="clientConnection.js"></script>
+</html>

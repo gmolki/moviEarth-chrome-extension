@@ -23,7 +23,7 @@ window.addEventListener("load", function() {
     var rememberMe = signIn["rememberMe"].checked;
 
     var message = {
-      code: codes.login,
+      code: codes.toServer.login,
       username: username,
       rememberMe: rememberMe
     };

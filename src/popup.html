@@ -25,7 +25,7 @@
   </head>
   <body>
     <div id="content">
-      <div class="login-page" style="display: none">
+      <div class="login-page" style="display: block">
         <div class="text-center d-flex justify-content-center row h-100">
           <form class="form-signin my-auto" name="signIn">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -55,9 +55,16 @@
           </form>
         </div>
       </div>
+	  
+	  <div id="userType" style="display: none">
+	  <button type="button" class="btn btn-primary btn-lg">Add content</button>
+	  <button type="button" class="btn btn-primary btn-lg">View content</button>
+	  </div>
+
+	  
       <div id="map"></div>
 	  <button id="test">TEST!</button>
-    </div>
+	</div>
   </body>
   <script src="test.js"></script>
   <script src="mapload.js"></script>

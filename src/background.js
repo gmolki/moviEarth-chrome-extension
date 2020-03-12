@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(function() {
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: {
               hostEquals: "www.netflix.com",
-              pathContains: "watch",
+              //pathContains: "watch",
               schemes: ["https"]
             }
           })

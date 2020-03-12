@@ -13,14 +13,36 @@ socket.onerror = function(error) {
 };
 
 socket.onmessage = function(msg) {
-  console.log("Received:\t" + msg.data);
+	console.log("Received:\t" + msg.data);
+	var recovered_data = JSON.parse( msg.data );
+	
+	switch (recovered_data.code) {
+	  case codes.toUser.checkLogin:
+		console.log("checkingLogin");
+		break;
+	  default:
+		console.error( "Server could not recognize the code:\t", recovered_data.code);
+	}
 };
 
 function sendMessage(data) {
   socket.send(JSON.stringify(data));
 }
 
-const codes = {
+/*const codes = {
   newConnection: 0,
   login: 1
+};*/
+
+const codes = {
+  fromUser: {
+      newConnection: 0,
+      login: 1
+    },
+    toUser: {
+      checkLogin: 0,
+      userAlreadyConnected: 1,
+      newUserRegistered: 2,
+      correctLogin: 3
+    }
 };

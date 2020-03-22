@@ -25,7 +25,7 @@
   </head>
   <body>
     <div id="content">
-      <div class="login-page" style="display: block">
+      <div class="login-page" id="screen_1" style="display: block">
         <div class="text-center d-flex justify-content-center row h-100">
           <form class="form-signin my-auto" name="signIn">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -56,17 +56,18 @@
         </div>
       </div>
 	  
-	  <div id="userType" style="display: none">
-	  <button type="button" class="btn btn-primary btn-lg">Add content</button>
-	  <button type="button" class="btn btn-primary btn-lg">View content</button>
+	  <div id="screen_2" style="display: none">
+		<button type="button" class="btn btn-primary btn-lg">Add content</button>
+		<button type="button" class="btn btn-primary btn-lg">View content</button>
 	  </div>
 
 	  
       <div id="map"></div>
-	  <button id="test">TEST!</button>
+	  <!-- <button id="test">TEST!</button> -->
 	</div>
   </body>
   <script src="test.js"></script>
+  <script src="screenManager.js"></script>
   <script src="mapload.js"></script>
   <script src="login.js"></script>
   <script src="clientConnection.js"></script>

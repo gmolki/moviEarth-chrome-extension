@@ -19,6 +19,10 @@ socket.onmessage = function(msg) {
 	switch (recovered_data.code) {
 	  case codes.toUser.checkLogin:
 		console.log("checkingLogin");
+		if(recovered_data.isUserFound)
+			changeScreen(2);
+		else
+			console.log("not User Found");
 		break;
 	  default:
 		console.error( "Server could not recognize the code:\t", recovered_data.code);

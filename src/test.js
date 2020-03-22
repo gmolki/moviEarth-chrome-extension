@@ -26,7 +26,8 @@ document.getElementById("test").addEventListener('click', () => {
 	  var tab = tabs[0];
 	  tab_title = tab.title;
 	  chrome.tabs.executeScript(tab.id, {
-		code: 'document.querySelector("div.scrubber-head").getAttribute("aria-valuenow")'
+		//code: 'document.querySelector("div.scrubber-head").getAttribute("aria-valuenow")'
+		code: 'document.querySelector("h4.ellipsize-text").textContent'
 	  }, display_h1);
 	});
 });

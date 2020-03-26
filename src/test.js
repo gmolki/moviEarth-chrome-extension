@@ -1,3 +1,8 @@
+const getMovieTime = 'document.querySelector("div.scrubber-head").getAttribute("aria-valuenow")';
+const getMovieName = 'document.querySelector("h4.ellipsize-text").textContent';
+
+
+
 document.getElementById("test").addEventListener('click', () => {
     console.log("Popup DOM fully loaded and parsed");
 	
@@ -26,10 +31,23 @@ document.getElementById("test").addEventListener('click', () => {
 	  var tab = tabs[0];
 	  tab_title = tab.title;
 	  chrome.tabs.executeScript(tab.id, {
-		//code: 'document.querySelector("div.scrubber-head").getAttribute("aria-valuenow")'
-		code: 'document.querySelector("h4.ellipsize-text").textContent'
+		code: getMovieName
 	  }, display_h1);
 	});
 });
+
+/*
+function display_h1 (results){
+	 console.log("Hola");
+	 console.log(results);
+}
+
+chrome.tabs.query({active: true}, function(tabs) {
+  var tab = tabs[0];
+  tab_title = tab.title;
+  chrome.tabs.executeScript(tab.id, {
+	code: 'document.querySelector("div.scrubber-head").getAttribute("aria-valuenow")'
+  }, display_h1);
+});*/
 
 //var prueba = document.querySelector("div#appMountPoint");

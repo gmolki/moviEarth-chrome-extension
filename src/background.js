@@ -16,3 +16,13 @@ chrome.runtime.onInstalled.addListener(function() {
     ]);
   });
 });
+
+function prueba(){
+	//console.log("estoyprobando");
+	var newT = "estoyprobando";
+	return newT;
+}
+
+
+
+

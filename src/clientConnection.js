@@ -2,6 +2,7 @@ var socket = new WebSocket("wss://ecv-etic.upf.edu/node/9010/ws/");
 
 socket.onopen = function() {
   console.log("Socket has been opened! :)");
+  alertConnection.style.display = "none";
 };
 
 socket.onclose = function(event) {
@@ -10,6 +11,7 @@ socket.onclose = function(event) {
 
 socket.onerror = function(error) {
   console.log("Error produced:\t", error);
+  alertConnection.style.display = "block";
 };
 
 socket.onmessage = function(msg) {
@@ -20,33 +22,36 @@ socket.onmessage = function(msg) {
 	  case codes.toUser.checkLogin:
 		console.log("checkingLogin");
 		if(recovered_data.isUserFound)
-			changeScreen(2);
+			changeScreen(screenCodes.userTypeScreen);
 		else
 			console.log("not User Found");
+		break;
+	  case codes.toUser.checkRegistration:
+		console.log("checkingRegistration");
+		console.log(recovered_data.userRegistration);
 		break;
 	  default:
 		console.error( "Server could not recognize the code:\t", recovered_data.code);
 	}
 };
 
+
 function sendMessage(data) {
   socket.send(JSON.stringify(data));
 }
 
-/*const codes = {
-  newConnection: 0,
-  login: 1
-};*/
-
 const codes = {
   fromUser: {
       newConnection: 0,
-      login: 1
+      login: 1,
+	  createAccount: 2,
+	  requestMovieInfo: 3
     },
     toUser: {
       checkLogin: 0,
-      userAlreadyConnected: 1,
-      newUserRegistered: 2,
-      correctLogin: 3
+	  checkRegistration: 1,
+      userAlreadyConnected: 2,
+      newUserRegistered: 3,
+      correctLogin: 4
     }
 };

@@ -15,7 +15,14 @@
 //   submitLogin();
 // };
 
+function onCreatingNewAccount()
+{
+	changeScreen(screenCodes.SignUpScreen);
+}
+
 window.addEventListener("load", function() {
+	
+  //LOGIN
   let signIn = document.forms["signIn"];
 
   signIn.addEventListener("submit", function(event) {
@@ -26,6 +33,25 @@ window.addEventListener("load", function() {
       code: codes.fromUser.login,
       username: username,
       rememberMe: rememberMe
+    };
+    sendMessage(message);
+
+    event.preventDefault();
+  });
+  
+  
+  //CREATE ACCOUNT
+  var createNewAccount = document.getElementById('newAccount');
+  createNewAccount.addEventListener("click", onCreatingNewAccount );
+  
+  let signUp = document.forms["signUp"];
+  
+  signUp.addEventListener("submit", function(event) {
+    var username = signUp["username"].value;
+
+    var message = {
+      code: codes.fromUser.createAccount,
+      username: username
     };
     sendMessage(message);
 

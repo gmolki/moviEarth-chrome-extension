@@ -10,12 +10,23 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  position: relative;
+  //background: #091d36;
+}
+
+#blur {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backdrop-filter: blur(5px);
+  display: block;
+	
 }
 
 .login-page {
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px);
+  //backdrop-filter: blur(5px);
 }
 
 .form-signin {
@@ -35,4 +46,22 @@ body {
   left: 0;
   position: absolute;
   z-index: -100;
+}
+
+.marker {
+  background-image: url('../resources/mapbox-icon.png');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }

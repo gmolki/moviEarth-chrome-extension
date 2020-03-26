@@ -11,5 +11,5 @@
   function onViewingContent()
  {
 	 changeScreen(screenCodes.viewContentScreen);
-	 activateMarkers();
+	 executingInNetflixTab(getMovieName);
  }

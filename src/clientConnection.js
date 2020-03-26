@@ -30,6 +30,10 @@ socket.onmessage = function(msg) {
 		console.log("checkingRegistration");
 		console.log(recovered_data.userRegistration);
 		break;
+	  case codes.toUser.sendSceneLocations:
+		console.log("receiving scene locations");
+		activateMarkers(recovered_data.sceneLocations);
+		break;
 	  default:
 		console.error( "Server could not recognize the code:\t", recovered_data.code);
 	}
@@ -50,8 +54,6 @@ const codes = {
     toUser: {
       checkLogin: 0,
 	  checkRegistration: 1,
-      userAlreadyConnected: 2,
-      newUserRegistered: 3,
-      correctLogin: 4
+      sendSceneLocations: 2
     }
 };

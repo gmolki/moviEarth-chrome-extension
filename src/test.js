@@ -31,23 +31,10 @@ document.getElementById("test").addEventListener('click', () => {
 	  var tab = tabs[0];
 	  tab_title = tab.title;
 	  chrome.tabs.executeScript(tab.id, {
-		code: getMovieName
+		code: 'document.querySelector("div.scrubber-head").getAttribute("aria-valuenow")'
 	  }, display_h1);
 	});
 });
 
-/*
-function display_h1 (results){
-	 console.log("Hola");
-	 console.log(results);
-}
-
-chrome.tabs.query({active: true}, function(tabs) {
-  var tab = tabs[0];
-  tab_title = tab.title;
-  chrome.tabs.executeScript(tab.id, {
-	code: 'document.querySelector("div.scrubber-head").getAttribute("aria-valuenow")'
-  }, display_h1);
-});*/
 
 //var prueba = document.querySelector("div#appMountPoint");

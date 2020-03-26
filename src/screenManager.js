@@ -30,6 +30,7 @@ screens[screenCodes.viewContentScreen].ownBehaviour = function(){ buttonGoBack.s
 buttonGoBack.style.display = "none";
 
 //var actualScreen = localStorage.getItem('actualScreen')
+//localStorage.removeItem('actualScreen');
 actualScreen = screenCodes.userTypeScreen;
 
 

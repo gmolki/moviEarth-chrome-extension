@@ -23,12 +23,44 @@ var map = new mapboxgl.Map({
 
 var geojson = undefined;
 
-function activateMarkers(){
+function activateMarkers(sceneLoc){
 	
-	var message = {
-      code: codes.fromUser.requestMovieInfo
-    };
-    sendMessage(message);
+	var scenesArr = [];
+	
+	for(var i = 0; i < sceneLoc.length; i++)
+	{
+		var scene = {
+			type: 'Feature',
+			geometry: {
+			  type: 'Point',
+			  coordinates: [sceneLoc[i].latitude, sceneLoc[i].longitude]
+			},
+			properties: {
+			  title: 'Mapbox',
+			  description: 'Washington, D.C.'
+			}		
+		};
+		
+		scenesArr.push(scene);
+	}
+	
+	geojson = {
+	  type: 'FeatureCollection',
+	  features: scenesArr
+	};
+	
+	// add markers to map
+	geojson.features.forEach(function(marker) {
+
+	  // create a HTML element for each feature
+	  var el = document.createElement('div');
+	  el.className = 'marker';
+
+	  // make a marker for each feature and add to the map
+	  new mapboxgl.Marker(el)
+		.setLngLat(marker.geometry.coordinates)
+		.addTo(map);
+	});
 	
 	/*
 	geojson = {

@@ -1,4 +1,4 @@
-# moviEarth-chrome-extension
+# moviEarth Chrome Extension
 
 moviEarth is a chrome extension that has been builded to work with [Netflix](http://netflix.com) and give to users the knowledge of the geolocalitation of some scenes of movies while they're watching them.
 It also allows users to upload content of new locations for scenes, creating then a community.

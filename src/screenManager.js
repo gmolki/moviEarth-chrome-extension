@@ -23,6 +23,9 @@ var screenCodes = { SignInScreen:         "0",
 var screens = [];
 screens.push( screen_0, screen_1, screen_2, screen_3, screen_4, screen_5);
 
+var pendingFunctions = [];
+var succesfullyConnected = false;
+
 screen_0.style.display = "none";
 screen_1.style.display = "none";
 screen_2.style.display = "none";
@@ -30,7 +33,7 @@ screen_3.style.display = "none";
 screen_4.style.display = "none";
 screen_5.style.display = "none";
 
-screens[screenCodes.SignInScreen].ownBehaviour = function(){ buttonGoBack.style.display = "none";  blurDiv.style.display = "block"}
+screens[screenCodes.SignInScreen].ownBehaviour = function(){ buttonGoBack.style.display = "none";  blurDiv.style.display = "block";}
 screens[screenCodes.SignUpScreen].ownBehaviour = function(){ buttonGoBack.style.display = "block"; blurDiv.style.display = "block"}
 screens[screenCodes.userTypeScreen].ownBehaviour = function(){ buttonGoBack.style.display = "block"; blurDiv.style.display = "block"}
 screens[screenCodes.addContentScreen].ownBehaviour = function(){ buttonGoBack.style.display = "block"; blurDiv.style.display = "block"}
@@ -38,19 +41,24 @@ screens[screenCodes.waitToMovieScreen].ownBehaviour = function(){ buttonGoBack.s
 screens[screenCodes.viewContentScreen].ownBehaviour = function(){ buttonGoBack.style.display = "block"; blurDiv.style.display = "none"}
 
 buttonGoBack.style.display = "none";
+var actualScreen = null;
+waitForServerConnectionResponse();
+function waitForServerConnectionResponse() {
+	actualScreen = localStorage.getItem('actualScreen');
+	//localStorage.removeItem('actualScreen');
+	//actualScreen = screenCodes.viewContentScreen;
+	
+	if(actualScreen == null)
+	{
+		localStorage.setItem('actualScreen', screenCodes.SignInScreen);
+		initFirstScreen(screenCodes.SignInScreen);
+	}
+	else
+		initFirstScreen(actualScreen);
+	
+};
 
-//var actualScreen = localStorage.getItem('actualScreen')
-//localStorage.removeItem('actualScreen');
-actualScreen = screenCodes.userTypeScreen;
 
-
-if(actualScreen == null)
-{
-	localStorage.setItem('actualScreen', screenCodes.SignInScreen);
-	changeScreen(screenCodes.SignInScreen);
-}
-else
-	changeScreen(actualScreen);
 
 
 function onClickBack()
@@ -79,16 +87,24 @@ function onClickBack()
 	}
 }
 
-function changeScreen(screenNumber)
-{
-	for(var i = 0; i < screens.length; i++)
-	{
-		screens[i].style.display = "none";
-	}
+function initFirstScreen(screenNumber){
 	
-	screens[screenNumber].style.display = "block";
+	if(screenNumber == screenCodes.waitToMovieScreen)
+		changeScreen(screenCodes.userTypeScreen);
+	else if(screenNumber == screenCodes.addContentScreen)
+		executingInNetflixTab(getMovieName, activateAddScreen);
+	else if(screenNumber == screenCodes.viewContentScreen)
+		executingInNetflixTab(getMovieName, requestMarkers);
+	else
+		changeScreen(screenNumber);		
+}
+
+function changeScreen(screenNumber){
+	
+	screens[actualScreen].style.display = "none";
 	actualScreen = screenNumber;
-	localStorage.setItem('actualScreen', actualScreen);
+	localStorage.setItem('actualScreen', screenNumber);
+	screens[screenNumber].style.display = "block";
 	
 	screens[screenNumber].ownBehaviour();
 }

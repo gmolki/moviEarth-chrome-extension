@@ -17,7 +17,7 @@
 
 function onCreatingNewAccount()
 {
-	changeScreen(screenCodes.SignUpScreen);
+	selectScreen(screenCodes.SignUpScreen);
 }
 
 window.addEventListener("load", function() {
@@ -56,8 +56,11 @@ window.addEventListener("load", function() {
     };
 	
 	if(succesfullyConnected)
+	{
 		sendMessage(message);
-
+		activateAlertCreateAccount();
+	}
+	
     event.preventDefault();
   });
 });

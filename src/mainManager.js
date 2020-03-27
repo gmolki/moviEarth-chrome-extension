@@ -1,3 +1,15 @@
+var requestMarkers;
+
+requestMarkers.executeFun = function(movieName){
+	var message = {
+		  code: codes.fromUser.requestMovieInfo,
+		  moviename: movieName
+		};
+	sendMessage(message);
+};
+
+requestMarkers.parameter = null;
+
 
 //FIRST CALL - Get Tab id of Netflix DOM
 function executingInNetflixTab(tabCallback, executionCallback) {
@@ -23,15 +35,18 @@ function requestMarkers (results){
 		 changeScreen(screenCodes.waitToMovieScreen);
 	 else
 	 {
-		 var message = {
-		  code: codes.fromUser.requestMovieInfo,
-		  moviename: results[0]
-		};
-		sendMessage(message);
-		
+		 if(succesfullyConnected)
+			 requestMarkers.executeFun(results[0]);
+		 else if(!succesfullyConnected)
+		 {
+			 requestMarkers.parameter = results[0];
+			 pendingFunctions.push(requestMarkers);
+		 }	
 		changeScreen(screenCodes.viewContentScreen);
 	 }	 
 }
+
+
 
 function activateAddScreen (results){
 	 console.log(results[0]);

@@ -68,50 +68,16 @@ function activateMarkers(movie, sceneLoc){
     .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
   .addTo(map);
 	});
-	
-	/*
-	geojson = {
-  type: 'FeatureCollection',
-  features: [{
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-4.1538, 40.1688]
-    },
-    properties: {
-      title: 'Mapbox',
-      description: 'Washington, D.C.'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [11.7836, 51.2805]
-    },
-    properties: {
-      title: 'Mapbox',
-      description: 'San Francisco, California'
-    }
-  }]
-};
 
-	// add markers to map
-	geojson.features.forEach(function(marker) {
-
-	  // create a HTML element for each feature
-	  var el = document.createElement('div');
-	  el.className = 'marker';
-
-	  // make a marker for each feature and add to the map
-	  new mapboxgl.Marker(el)
-		.setLngLat(marker.geometry.coordinates)
-		.addTo(map);
-	});*/
 }
 
 function resetMarkers()
 {
 	geojson = undefined;
 	document.getElementsByClassName("marker").remove();
+	//document.getElementsByClassName("marker").remove();
+	var popup = document.getElementsByClassName("mapboxgl-popup-content");
+	if(popup != undefined)
+		popup.remove();
+	
 }

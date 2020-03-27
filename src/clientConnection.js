@@ -1,11 +1,14 @@
 var socket = new WebSocket("wss://ecv-etic.upf.edu/node/9010/ws/");
 
-var succesfullyConnected = false;
-
 socket.onopen = function() {
   console.log("Socket has been opened! :)");
   alertConnection.style.display = "none";
   succesfullyConnected = true;
+  for(var i = 0; i < pendingFunctions.length; i++)
+  {
+	  pendingFunctions[i].executeFun(pendingFunctions[i].parameter);
+  }
+  //waitForServerConnectionResponse();
 };
 
 socket.onclose = function(event) {

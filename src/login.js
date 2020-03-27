@@ -17,7 +17,7 @@
 
 function onCreatingNewAccount()
 {
-	selectScreen(screenCodes.SignUpScreen);
+	changeScreen(screenCodes.SignUpScreen);
 }
 
 window.addEventListener("load", function() {

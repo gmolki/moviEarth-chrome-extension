@@ -5,6 +5,8 @@ It also allows users to upload content of new locations for scenes, creating the
 
 (*To use moviEarth it is necessary that you have a [Netflix](http://netflix.com) account.)*
 
+> [Video showing moviEarth](https://youtu.be/iCkW8vRVy7M)
+
 ## Downloading the extension
 Clone this repo in your machine (anywhere you want) by executing the following command in your CLI
 	

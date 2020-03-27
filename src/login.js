@@ -24,6 +24,8 @@ window.addEventListener("load", function() {
 	
   //LOGIN
   let signIn = document.forms["signIn"];
+  var createNewAccount = document.getElementById('newAccount');
+  createNewAccount.addEventListener("click", onCreatingNewAccount );
 
   signIn.addEventListener("submit", function(event) {
     var username = signIn["username"].value;
@@ -34,16 +36,15 @@ window.addEventListener("load", function() {
       username: username,
       rememberMe: rememberMe
     };
-    sendMessage(message);
+	
+	if(succesfullyConnected)
+		sendMessage(message);
 
     event.preventDefault();
   });
   
   
-  //CREATE ACCOUNT
-  var createNewAccount = document.getElementById('newAccount');
-  createNewAccount.addEventListener("click", onCreatingNewAccount );
-  
+  //CREATE ACCOUNT  
   let signUp = document.forms["signUp"];
   
   signUp.addEventListener("submit", function(event) {
@@ -53,7 +54,9 @@ window.addEventListener("load", function() {
       code: codes.fromUser.createAccount,
       username: username
     };
-    sendMessage(message);
+	
+	if(succesfullyConnected)
+		sendMessage(message);
 
     event.preventDefault();
   });

@@ -1,17 +1,23 @@
 var socket = new WebSocket("wss://ecv-etic.upf.edu/node/9010/ws/");
 
+var succesfullyConnected = false;
+
 socket.onopen = function() {
   console.log("Socket has been opened! :)");
   alertConnection.style.display = "none";
+  succesfullyConnected = true;
 };
 
 socket.onclose = function(event) {
   console.log("Socket has been closed:\t", event);
+  succesfullyConnected = false;
 };
 
 socket.onerror = function(error) {
   console.log("Error produced:\t", error);
+  hideAllAlerts();
   alertConnection.style.display = "block";
+  succesfullyConnected = false;
 };
 
 socket.onmessage = function(msg) {
@@ -32,7 +38,7 @@ socket.onmessage = function(msg) {
 		break;
 	  case codes.toUser.sendSceneLocations:
 		console.log("receiving scene locations");
-		activateMarkers(recovered_data.sceneLocations);
+		activateMarkers(recovered_data.movie, recovered_data.sceneLocations);
 		break;
 	  default:
 		console.error( "Server could not recognize the code:\t", recovered_data.code);
@@ -49,7 +55,8 @@ const codes = {
       newConnection: 0,
       login: 1,
 	  createAccount: 2,
-	  requestMovieInfo: 3
+	  requestMovieInfo: 3,
+	  sendSceneInfo: 4
     },
     toUser: {
       checkLogin: 0,

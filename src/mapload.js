@@ -20,10 +20,15 @@ var map = new mapboxgl.Map({
   zoom: 1 // starting zoom
 });
 
+function centerMap()
+{
+	map.flyTo({ center: [0, 0], zoom: 1 });
+}
+
 
 var geojson = undefined;
 
-function activateMarkers(sceneLoc){
+function activateMarkers(movie, sceneLoc){
 	
 	var scenesArr = [];
 	
@@ -36,8 +41,8 @@ function activateMarkers(sceneLoc){
 			  coordinates: [sceneLoc[i].latitude, sceneLoc[i].longitude]
 			},
 			properties: {
-			  title: 'Mapbox',
-			  description: 'Washington, D.C.'
+			  title: movie,
+			  description: sceneLoc[i].description
 			}		
 		};
 		
@@ -57,9 +62,11 @@ function activateMarkers(sceneLoc){
 	  el.className = 'marker';
 
 	  // make a marker for each feature and add to the map
-	  new mapboxgl.Marker(el)
-		.setLngLat(marker.geometry.coordinates)
-		.addTo(map);
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+  .addTo(map);
 	});
 	
 	/*

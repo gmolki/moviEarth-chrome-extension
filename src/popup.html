@@ -24,141 +24,159 @@
     />
   </head>
   <body>
-    <div id="content" class="d-flex">
-      <div id="blur"></div>
+    
 
-      <!--    ERROR ALERT    -->
-      <div
-        id="error"
-        class="w-100 h-100 d-flex  justify-content-center align-items-start"
-        style="position: absolute"
-      >
-        <div
-          class="alert alert-danger"
-          role="alert"
-          id="alert_connection"
-          style="display: none"
-        >
-          An error ocurred during connection
-        </div>
-      </div>
 
-      <!--    LOGIN PAGE - SCREEN_0   -->
-      <div
-        class="login-page"
-        id="screen_0"
-        style="display: none; position: absolute"
-      >
-        <div class="text-center d-flex justify-content-center row h-100">
-          <form class="form-signin my-auto" name="signIn">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <label for="inputUsername" class="sr-only">Username</label>
-            <input
-              type="text"
-              id="inputUsername"
-              name="username"
-              class="form-control"
-              placeholder="Username"
-              required=""
-              autofocus=""
-            />
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" name="rememberMe" />
-                Remember me
-              </label>
-            </div>
-            <button
-              id="signin-button"
-              class="btn btn-lg btn-primary btn-block"
-              type="submit"
-            >
-              Sign in
-            </button>
-            <button type="button" id="newAccount" class="btn btn-link">
-              Create new account
-            </button>
-          </form>
-        </div>
-      </div>
+	
+	
+	<div id="content" class="d-flex">
+		
+		<div id="blur"></div>
+		
+		<!--    ERROR ALERT    -->
+		<div id="error" class="w-100 h-100 d-flex  justify-content-center align-items-start" style="position: absolute">
+			<div class="alert alert-danger" role="alert"  id="alert_connection" style="display: none; z-index: 3"> An error ocurred during connection </div>
+			<div class="alert alert-success" role="alert"  id="alert_sendScene" style="display: none; z-index: 3"> Scene was succesfully sended </div>
+		</div>
+		
+		<!--    LOGIN PAGE - SCREEN_0   -->
+		<div class="login-page" id="screen_0" style="display: none; position: absolute">
+			<div class="text-center d-flex justify-content-center row h-100">
+			  <form class="form-signin my-auto" name="signIn">
+				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+				<label for="inputUsername" class="sr-only">Username</label>
+				<input
+				  type="text"
+				  id="inputUsername"
+				  name="username"
+				  class="form-control"
+				  placeholder="Username"
+				  required=""
+				  autofocus=""
+				/>
+				<div class="checkbox mb-3">
+				  <label>
+					<input type="checkbox" value="remember-me" name="rememberMe" />
+					Remember me
+				  </label>
+				</div>
+				<button
+				  id="signin-button"
+				  class="btn btn-lg btn-primary btn-block"
+				  type="submit"
+				>
+				  Sign in
+				</button>
+				<button type="button" id="newAccount" class="btn btn-link">Create new account</button>
+			  </form> 
+			</div>
+		</div>
+		
+		<!--    CREATE ACCOUNT PAGE - SCREEN_1    -->
+		<div class="login-page" id="screen_1" style="position: absolute; display: none">
+			<div class="text-center d-flex justify-content-center row h-100">
+			  <form class="form-signin my-auto" name="signUp">
+				<h1 class="h3 mb-3 font-weight-normal">Select new name</h1>
+				<label for="inputUsername" class="sr-only">Username</label>
+				<input
+				  type="text"
+				  id="inputUsername"
+				  name="username"
+				  class="form-control"
+				  placeholder="Username"
+				  required=""
+				  autofocus=""
+				/>
+				<button
+				  id="signin-button"
+				  class="btn btn-lg btn-success btn-block mb-3"
+				  type="submit"
+				>
+				  Create account
+				</button>
+			  </form> 
+			</div>
+		</div>
+		
+		<!--    SELECT USERTYPE PAGE - SCREEN_2    -->
+		<div class="h-100 w-100" id="screen_2" style="position: absolute; display: none">
+			<div class="d-flex justify-content-center flex-column align-items-center h-100 w-100">
+				<button type="button" id="add_content" class="btn btn-primary btn-lg mb-3" style="z-index: 100">Add content</button>
+				<button type="button" id="view_content" class="btn btn-primary btn-lg mb-3" style="z-index: 100">View content</button>
+			</div>
+		</div>
+		
+		
+		<!--    ADD CONTENT PAGE - SCREEN_3    -->
+		<div class="h-100 w-100" id="screen_3" style="position: absolute; display: none">
+			<div class="text-center d-flex justify-content-center row h-100">
+				<form class="form-signin my-auto" name="addContent">
+					<label for="movieName" ><strong>MOVIE</strong></label>
+					<input class="form-control mb-3" type="text" id="movieName" placeholder="CANNOT DETECT MOVIE NAME" readonly>
+					
+					<div class="row mb-3">
+						<div class="col">
+						<label for="latitudeCoord"><strong>LATITUDE</strong></label>
+						  <input type="text" class="form-control" id="latitudeCoord" required="" placeholder="19.0123">
+						</div>
+						<div class="col">
+						<label for="longitudCoord"><strong>LONGITUD</strong></label>
+						  <input type="text" class="form-control" id="longitudCoord" required="" placeholder="21.4321">
+						</div>
+					</div>
+					
+					<div class="row mb-3">
+						<div class="col">
+						<label for="fromTime"><strong>FROM</strong></label>
+						  <input type="text" class="form-control" id="fromTime" required="" placeholder="0:45:15">
+						</div>
+						<div class="col">
+						<label for="toTime"><strong>TO</strong></label>
+						  <input type="text" class="form-control" id="toTime" required="" placeholder="1:05:45">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="descriptionScene"><strong>DESCRIPTION</strong></label>
+						<textarea class="form-control" id="descriptionScene" rows="2" required=""></textarea>
+					</div>
 
-      <!--    CREATE ACCOUNT PAGE - SCREEN_1    -->
-      <div
-        class="login-page"
-        id="screen_1"
-        style="position: absolute; display: none"
-      >
-        <div class="text-center d-flex justify-content-center row h-100">
-          <form class="form-signin my-auto" name="signUp">
-            <h1 class="h3 mb-3 font-weight-normal">Select new name</h1>
-            <label for="inputUsername" class="sr-only">Username</label>
-            <input
-              type="text"
-              id="inputUsername"
-              name="username"
-              class="form-control"
-              placeholder="Username"
-              required=""
-              autofocus=""
-            />
-            <button
-              id="signin-button"
-              class="btn btn-lg btn-success btn-block mb-3"
-              type="submit"
-            >
-              Create account
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!--    SELECT USERTYPE PAGE - SCREEN_2    -->
-      <div
-        class="h-100 w-100"
-        id="screen_2"
-        style="position: absolute; display: none"
-      >
-        <div
-          id="screen_2"
-          class="d-flex justify-content-center flex-column align-items-center h-100 w-100"
-        >
-          <button
-            type="button"
-            id="add_content"
-            class="btn btn-primary btn-lg mb-3"
-            style="z-index: 100"
-          >
-            Add content
-          </button>
-          <button
-            type="button"
-            id="view_content"
-            class="btn btn-primary btn-lg mb-3"
-            style="z-index: 100"
-          >
-            View content
-          </button>
-        </div>
-      </div>
-
-      <!--    VIEW CONTENT -  SCREEN_3    -->
-      <div
-        class="h-100 w-100"
-        id="screen_3"
-        style="position: absolute; display: none"
-      ></div>
-
-      <!--    MAP    -->
-      <div id="map"></div>
-
-      <!--    BUTTONS IN BOTTOM    -->
-      <div
-        class="d-flex align-items-end h-100"
-        style=" position: absolute; z-index: 1"
-      >
-        <button type="button" id="goBack" class="btn btn-dark">GO BACK</button>
-      </div>
-    </div>
+					<button
+					  id="signin-button"
+					  class="btn btn-lg btn-success btn-block mb-3"
+					  type="submit"
+					>
+					  Send new location
+					</button>
+				</form> 
+			</div>
+		</div>
+		
+		<!--    WAIT FOR MOVIE PAGE - SCREEN_4    -->
+		<div class="h-100 w-100" id="screen_4" style="position: absolute; display: none; z-index: 2">
+			<div class="d-flex justify-content-center flex-column align-items-center h-100 w-100">
+				<div>UPS, YOU FORGOT TO SELECT A MOVIE</div>
+			</div>
+		</div>
+		
+		
+		<!--    VIEW CONTENT PAGE -  SCREEN_5    -->
+		<div class="h-100 w-100" id="screen_5" style="position: absolute; display: none"></div>
+		
+		<!--    MAP    -->
+		<div id="map"></div>
+		
+		<!--    BUTTONS IN BOTTOM    -->
+		<div  class="d-flex align-items-end h-100" style=" position: absolute">
+			<button type="button" id="goBack" class="btn btn-dark" style=" position: absolute; z-index: 2">GO BACK</button>
+			<div class="p-2 bd-highlight">Flex item 1</div>
+			<div class="p-2 bd-highlight">Flex item 2</div>
+			<div class="p-2 bd-highlight">Flex item 3</div>
+		</div>
+	</div>
+	
+	
+	
   </body>
 
   <!-- <script src="test.js"></script> -->

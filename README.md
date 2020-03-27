@@ -42,3 +42,4 @@ Once you register/log in with your user, you'll be able to see the main menu of 
 > If you want to test the extension, then enter in the movie [MISIÓN IMPOSIBLE 4: PROTOCOLO FANTASMA](https://www.netflix.com/watch/70173048?trackId=14170286&tctx=1%2C1%2Caec93198-6f9f-45c0-a405-5dc96c2cf7f1-23232620%2C3242775d-f7ee-4225-8e04-a6ecdd841388_9369497X3XX1585339753086%2C3242775d-f7ee-4225-8e04-a6ecdd841388_ROOT)
 
 ### Adding new locations of scenes
+Fill up the form with the values referred to the location of the scene you want to add and that's it! The location will automatically added to the map!
